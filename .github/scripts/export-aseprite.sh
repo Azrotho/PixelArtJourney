@@ -50,9 +50,12 @@ for aseprite_file in "${ASEPRITE_FILES[@]}"; do
 
   echo "--- Processing: $relative_path ---"
 
-  # 1) Déterminer le nombre de frames via le JSON de métadonnées
+  # 1) Extraire métadonnées : nb frames + dimensions originales
   tmp_dir=$(mktemp -d "$REPO_ROOT/.tmp-XXXXXX")
   frame_count=0
+  sprite_w=16
+  sprite_h=16
+  scale=1
 
   if aseprite -b "$aseprite_file" \
     --data "$tmp_dir/frames.json" \
@@ -61,6 +64,8 @@ for aseprite_file in "${ASEPRITE_FILES[@]}"; do
     2>&1; then
     if [ -f "$tmp_dir/frames.json" ]; then
       frame_count=$(jq '.frames | length' "$tmp_dir/frames.json" 2>/dev/null || echo "0")
+      sprite_w=$(jq '.meta.size.w' "$tmp_dir/frames.json" 2>/dev/null || echo "16")
+      sprite_h=$(jq '.meta.size.h' "$tmp_dir/frames.json" 2>/dev/null || echo "16")
     fi
   else
     echo "  [WARN] Aseprite could not read the file - see error above."
@@ -68,7 +73,15 @@ for aseprite_file in "${ASEPRITE_FILES[@]}"; do
 
   rm -rf "$tmp_dir"
 
-  # Si frame_count est vide ou nul, fallback direct PNG
+  # Calculer le scale : la plus grande dimension doit atteindre ~200px
+  if [ "$sprite_w" -gt 0 ] && [ "$sprite_h" -gt 0 ]; then
+    max_dim=$sprite_w
+    [ "$sprite_h" -gt "$max_dim" ] && max_dim=$sprite_h
+    computed=$(( (200 + max_dim - 1) / max_dim ))  # ceil(200 / max_dim)
+    [ "$computed" -gt 1 ] && scale=$computed
+  fi
+
+  # Si frame_count inconnu, fallback PNG sans scale
   if [ -z "$frame_count" ] || [ "$frame_count" -le 0 ]; then
     echo "  [WARN] Frame count unknown, trying direct PNG export..."
     if aseprite -b "$aseprite_file" --save-as "$output_subdir/$filename.png" 2>&1; then
@@ -80,17 +93,20 @@ for aseprite_file in "${ASEPRITE_FILES[@]}"; do
     continue
   fi
 
-  # 2) Exporter selon le nombre de frames
+  # 2) Exporter selon le nombre de frames, avec scale si > 1
+  scale_opt=""
+  [ "$scale" -gt 1 ] && scale_opt="--scale $scale"
+
   if [ "$frame_count" -eq 1 ]; then
-    if aseprite -b "$aseprite_file" --save-as "$output_subdir/$filename.png" 2>&1; then
-      echo "  [OK] Exported -> output/$relative_dir/$filename.png  (1 frame)"
+    if aseprite -b "$aseprite_file" $scale_opt --save-as "$output_subdir/$filename.png" 2>&1; then
+      echo "  [OK] Exported -> output/$relative_dir/$filename.png  (1 frame, scale=${scale}x)"
     else
       echo "  [ERROR] PNG export failed for $relative_path"
       ERRORS=$((ERRORS + 1))
     fi
   else
-    if aseprite -b "$aseprite_file" --save-as "$output_subdir/$filename.gif" 2>&1; then
-      echo "  [OK] Exported -> output/$relative_dir/$filename.gif  ($frame_count frames)"
+    if aseprite -b "$aseprite_file" $scale_opt --save-as "$output_subdir/$filename.gif" 2>&1; then
+      echo "  [OK] Exported -> output/$relative_dir/$filename.gif  ($frame_count frames, scale=${scale}x)"
     else
       echo "  [ERROR] GIF export failed for $relative_path"
       ERRORS=$((ERRORS + 1))
