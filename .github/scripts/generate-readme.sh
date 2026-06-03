@@ -1,9 +1,28 @@
 #!/usr/bin/env bash
+# ============================================================
+# generate-readme.sh
+# Génère le README.md galerie à partir des images dans output/
+# ============================================================
 set -euo pipefail
+
+trap 'echo "[ERROR] at line $LINENO (exit: $?)" >&2' ERR
 
 REPO_ROOT="${REPO_ROOT:-$(pwd)}"
 OUTPUT_DIR="$REPO_ROOT/output"
 README="$REPO_ROOT/README.md"
+
+echo "[DEBUG] REPO_ROOT=$REPO_ROOT"
+echo "[DEBUG] PWD=$(pwd)"
+echo "[DEBUG] shell=$(ps -p $$ -o comm=)"
+
+# Test sort -V
+if echo -e 'day1\nday10\nday2' | sort -V >/dev/null 2>&1; then
+  echo "[DEBUG] sort -V works"
+  SORT_CMD="sort -V"
+else
+  echo "[DEBUG] sort -V NOT available, using -n"
+  SORT_CMD="sort -t'd' -k2 -n"
+fi
 
 total_sprites=0
 total_frames=0
@@ -68,7 +87,9 @@ echo "Scanning day folders..."
 day_dirs=()
 while IFS= read -r dir; do
   day_dirs+=("$dir")
-done < <(find "$REPO_ROOT" -maxdepth 1 -type d -name 'day*' | sort -V)
+done < <(find "$REPO_ROOT" -maxdepth 1 -type d -name 'day*' | $SORT_CMD)
+
+echo "[DEBUG] found ${#day_dirs[@]} day dirs: ${day_dirs[*]:-(none)}"
 
 if [ ${#day_dirs[@]} -eq 0 ]; then
   echo "No day folders found. Generating minimal README."
@@ -144,7 +165,7 @@ for day_dir in "${day_dirs[@]}"; do
     day_sprites=$((day_sprites + 1))
 
     # On utilise un format simple: TYPE|IMG_PATH|W|H|LABEL
-    entry_label="${label_escaped} — ${frame_label}"
+    entry_label="${label_escaped} - ${frame_label}"
     if [ -z "$day_rows" ]; then
       day_rows="PNG_GIF|$img_rel_path|$img_w|$img_h|$entry_label"
     else
@@ -161,7 +182,7 @@ PNG_GIF|$img_rel_path|$img_w|$img_h|$entry_label"
     continue
   fi
 
-  section_header="## Jour ${day_count} — ${sprite_names}"
+  section_header="## Jour ${day_count} - ${sprite_names}"
 
   if [ "$day_sprites" -eq 1 ]; then
     while IFS='|' read -r _ img_rel_path img_w img_h label; do
