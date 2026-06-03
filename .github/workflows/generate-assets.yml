@@ -48,7 +48,7 @@ jobs:
 
           echo "::group::Get Skia URL"
           cd /tmp/aseprite-src
-          skia_url=$(source laf/misc/skia-url.sh | xargs)
+          skia_url=$(bash laf/misc/skia-url.sh Release | xargs)
           skia_file=$(basename "$skia_url")
           echo "Skia URL: $skia_url"
           echo "::endgroup::"
