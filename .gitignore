@@ -1,7 +1,7 @@
-# Binaire Aseprite extrait par le workflow (Docker)
-aseprite-bin/
-
-# Fichiers temporaires
+# Fichiers temporaires (workflow)
 *.tmp
+.tmp-*
+
+# Fichiers système
 .DS_Store
 Thumbs.db

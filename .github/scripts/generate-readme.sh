@@ -14,7 +14,7 @@ days_content=""
 get_frame_count() {
   local aseprite_file="$1"
   local tmp_dir
-  tmp_dir=$(mktemp -d)
+  tmp_dir=$(mktemp -d "$REPO_ROOT/.tmp-XXXXXX")
   local count=0
 
   if aseprite -b "$aseprite_file" \

@@ -34,7 +34,7 @@ for aseprite_file in "${ASEPRITE_FILES[@]}"; do
 
   echo "Processing: $relative_path"
 
-  tmp_dir=$(mktemp -d)
+  tmp_dir=$(mktemp -d "$REPO_ROOT/.tmp-XXXXXX")
   frame_count=0
 
   if aseprite -b "$aseprite_file" \
