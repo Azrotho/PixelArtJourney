@@ -196,7 +196,7 @@ PNG_GIF|$img_rel_path|$img_w|$img_h|$entry_label"
       day_html="
 <p align=\"center\">
   <a href=\"${img_rel_path}\">
-    <img src=\"${img_rel_path}\" width=\"${max_size}\" alt=\"${label}\">
+    <img src=\"${img_rel_path}\" width=\"${max_size}\" style=\"image-rendering: pixelated;\" alt=\"${label}\">
   </a>
   <br>
   <em>${label}</em>
@@ -211,7 +211,7 @@ PNG_GIF|$img_rel_path|$img_w|$img_h|$entry_label"
       max_size=$(compute_display_size "$day_sprites" "$img_w" "$img_h")
       cells+=("<td align=\"center\">
   <a href=\"${img_rel_path}\">
-    <img src=\"${img_rel_path}\" width=\"${max_size}\" alt=\"${label}\">
+    <img src=\"${img_rel_path}\" width=\"${max_size}\" style=\"image-rendering: pixelated;\" alt=\"${label}\">
   </a>
   <br>
   <em>${label}</em>
