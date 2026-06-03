@@ -142,7 +142,13 @@ for day_dir in "${day_dirs[@]}"; do
       img_rel_path="$img_rel_path.png"
     fi
 
-    read img_w img_h < <(get_image_dimensions "$img_file")
+    echo "[DEBUG] img_file=$img_file"
+    echo "[DEBUG] running get_image_dimensions output:"
+    get_image_dimensions "$img_file" || echo "(get_image_dimensions returned non-zero)"
+    echo "[DEBUG] identify available: $(command -v identify || echo NOT_FOUND)"
+
+    read img_w img_h < <(get_image_dimensions "$img_file") || true
+    echo "[DEBUG] read result: img_w=$img_w img_h=$img_h"
     [ "$img_w" -le 0 ] && img_w=16
     [ "$img_h" -le 0 ] && img_h=16
 
