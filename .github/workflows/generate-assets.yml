@@ -24,7 +24,7 @@ jobs:
           echo "::endgroup::"
 
           echo "::group::Extract aseprite binary"
-          docker create --name ase al1ydn/aseprite-linux-build:v1.3.2
+          docker create --name ase al1ydn/aseprite-linux-build:v1.3.2 true
           docker cp ase:/app/bin ./aseprite-bin
           docker rm ase
           echo "$PWD/aseprite-bin" >> "$GITHUB_PATH"
