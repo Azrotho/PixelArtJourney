@@ -265,7 +265,6 @@ echo "$days_content" >> "$README"
 # Ajouter le pied de page
 cat >> "$README" << README_FOOTER
 
-*Généré automatiquement par [GitHub Actions](https://github.com/features/actions)*
 README_FOOTER
 
 echo ""
