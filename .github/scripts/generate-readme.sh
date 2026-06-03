@@ -66,9 +66,9 @@ compute_display_size() {
 echo "Scanning day folders..."
 
 day_dirs=()
-while IFS= read -r -d '' dir; do
+while IFS= read -r dir; do
   day_dirs+=("$dir")
-done < <(find "$REPO_ROOT" -maxdepth 1 -type d -name 'day*' -print0 | sort -zV)
+done < <(find "$REPO_ROOT" -maxdepth 1 -type d -name 'day*' | sort -V)
 
 if [ ${#day_dirs[@]} -eq 0 ]; then
   echo "No day folders found. Generating minimal README."
@@ -79,9 +79,9 @@ for day_dir in "${day_dirs[@]}"; do
   day_count=$((day_count + 1))
 
   aseprite_files=()
-  while IFS= read -r -d '' f; do
+  while IFS= read -r f; do
     aseprite_files+=("$f")
-  done < <(find "$day_dir" -maxdepth 1 -name '*.aseprite' -print0 | sort -z)
+  done < <(find "$day_dir" -maxdepth 1 -name '*.aseprite' | sort)
 
   if [ ${#aseprite_files[@]} -eq 0 ]; then
     continue
