@@ -79,14 +79,17 @@ jobs:
           ninja aseprite
           echo "::endgroup::"
 
-          echo "::group::Copy binary to cache"
+          echo "::group::Copy binary + data to cache"
           mkdir -p /tmp/aseprite-build
           cp /tmp/aseprite-src/build/bin/aseprite /tmp/aseprite-build/
+          cp -r /tmp/aseprite-src/data /tmp/aseprite-build/
           echo "::endgroup::"
 
       - name: Install Aseprite CLI
         run: |
           sudo cp /tmp/aseprite-build/aseprite /usr/local/bin/
+          sudo mkdir -p /usr/local/share/aseprite
+          sudo cp -r /tmp/aseprite-build/data /usr/local/share/aseprite/
           echo "Aseprite version: $(aseprite --version)"
 
       - name: Install tools
