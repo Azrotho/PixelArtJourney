@@ -1,0 +1,64 @@
+name: Generate Assets & README
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: generate-assets-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Aseprite CLI (Docker)
+        run: |
+          echo "::group::Pull Docker image"
+          docker pull al1ydn/aseprite-linux-build:v1.3.2
+          echo "::endgroup::"
+
+          echo "::group::Extract aseprite binary"
+          docker create --name ase al1ydn/aseprite-linux-build:v1.3.2
+          docker cp ase:/app/bin ./aseprite-bin
+          docker rm ase
+          echo "$PWD/aseprite-bin" >> "$GITHUB_PATH"
+          echo "::endgroup::"
+
+      - name: Install dependencies (jq, ImageMagick)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq jq imagemagick
+      - name: Export .aseprite files to images
+        run: |
+          chmod +x "$GITHUB_WORKSPACE/.github/scripts/export-aseprite.sh"
+          bash "$GITHUB_WORKSPACE/.github/scripts/export-aseprite.sh"
+        shell: bash
+        env:
+          REPO_ROOT: ${{ github.workspace }}
+      - name: Generate README.md
+        run: |
+          chmod +x "$GITHUB_WORKSPACE/.github/scripts/generate-readme.sh"
+          bash "$GITHUB_WORKSPACE/.github/scripts/generate-readme.sh"
+        shell: bash
+        env:
+          REPO_ROOT: ${{ github.workspace }}
+      - name: Commit & push generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add output/ README.md
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Auto-generate assets & README [skip ci]"
+          git push
