@@ -2,9 +2,9 @@
 
 Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org/).
 
-**2 sprites • 2 jours • 3 frames au total**
+**3 sprites • 3 jours • 4 frames au total**
 
-Dernière mise à jour : 04 June 2026 à 22:02 UTC
+Dernière mise à jour : 04 June 2026 à 22:57 UTC
 
 ---
 
@@ -30,6 +30,19 @@ Dernière mise à jour : 04 June 2026 à 22:02 UTC
   </a>
   <br>
   <em>soju - 1 frame</em>
+</p>
+
+---
+
+
+## Jour 3 - cube
+
+<p align="center">
+  <a href="output/day3/cube.png">
+    <img src="output/day3/cube.png" width="300" style="image-rendering: pixelated;" alt="cube - 1 frame">
+  </a>
+  <br>
+  <em>cube - 1 frame</em>
 </p>
 
 ---
