@@ -4,7 +4,7 @@ Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org
 
 **1 sprites • 1 jours • 2 frames au total**
 
-Dernière mise à jour : 03 June 2026 à 23:37 UTC
+Dernière mise à jour : 03 June 2026 à 23:39 UTC
 
 ---
 
@@ -23,4 +23,3 @@ Dernière mise à jour : 03 June 2026 à 23:37 UTC
 
 
 
-*Généré automatiquement par [GitHub Actions](https://github.com/features/actions)*
