@@ -2,9 +2,9 @@
 
 Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org/).
 
-**4 sprites • 3 jours • 5 frames au total**
+**5 sprites • 4 jours • 6 frames au total**
 
-Dernière mise à jour : 04 June 2026 à 23:07 UTC
+Dernière mise à jour : 06 June 2026 à 21:10 UTC
 
 ---
 
@@ -55,6 +55,19 @@ Dernière mise à jour : 04 June 2026 à 23:07 UTC
 </td>
   </tr>
 </table>
+
+---
+
+
+## Jour 4 - loveletter
+
+<p align="center">
+  <a href="output/day4/loveletter.png">
+    <img src="output/day4/loveletter.png" width="300" style="image-rendering: pixelated;" alt="loveletter - 1 frame">
+  </a>
+  <br>
+  <em>loveletter - 1 frame</em>
+</p>
 
 ---
 
