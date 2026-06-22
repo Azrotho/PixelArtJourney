@@ -2,9 +2,9 @@
 
 Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org/).
 
-**6 sprites • 4 jours • 7 frames au total**
+**7 sprites • 5 jours • 8 frames au total**
 
-Dernière mise à jour : 06 June 2026 à 21:25 UTC
+Dernière mise à jour : 22 June 2026 à 15:23 UTC
 
 ---
 
@@ -79,6 +79,19 @@ Dernière mise à jour : 06 June 2026 à 21:25 UTC
 </td>
   </tr>
 </table>
+
+---
+
+
+## Jour 5 - runic-bubble
+
+<p align="center">
+  <a href="output/day5/runic-bubble.png">
+    <img src="output/day5/runic-bubble.png" width="300" style="image-rendering: pixelated;" alt="runic-bubble - 1 frame">
+  </a>
+  <br>
+  <em>runic-bubble - 1 frame</em>
+</p>
 
 ---
 
