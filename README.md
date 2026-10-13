@@ -2,9 +2,9 @@
 
 Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org/).
 
-**9 sprites • 6 jours • 35 frames au total**
+**17 sprites • 6 jours • 43 frames au total**
 
-Dernière mise à jour : 13 October 2026 à 14:26 UTC
+Dernière mise à jour : 13 October 2026 à 14:55 UTC
 
 ---
 
@@ -107,15 +107,79 @@ Dernière mise à jour : 13 October 2026 à 14:26 UTC
 ---
 
 
-## Jour 6 - background
+## Jour 6 - background, discord-logo, github-logo, logo, separator, twitch-logo, windowsd, x-logo, youtube-logo
 
-<p align="center">
+<table>
+  <tr>
+    <td align="center">
   <a href="output/day6/background.png">
-    <img src="output/day6/background.png" width="300" style="image-rendering: pixelated;" alt="background - 1 frame">
+    <img src="output/day6/background.png" width="200" style="image-rendering: pixelated;" alt="background - 1 frame">
   </a>
   <br>
   <em>background - 1 frame</em>
-</p>
+</td>
+    <td align="center">
+  <a href="output/day6/discord-logo.png">
+    <img src="output/day6/discord-logo.png" width="200" style="image-rendering: pixelated;" alt="discord-logo - 1 frame">
+  </a>
+  <br>
+  <em>discord-logo - 1 frame</em>
+</td>
+    <td align="center">
+  <a href="output/day6/github-logo.png">
+    <img src="output/day6/github-logo.png" width="200" style="image-rendering: pixelated;" alt="github-logo - 1 frame">
+  </a>
+  <br>
+  <em>github-logo - 1 frame</em>
+</td>
+    <td align="center">
+  <a href="output/day6/logo.png">
+    <img src="output/day6/logo.png" width="200" style="image-rendering: pixelated;" alt="logo - 1 frame">
+  </a>
+  <br>
+  <em>logo - 1 frame</em>
+</td>
+  </tr>
+  <tr>
+    <td align="center">
+  <a href="output/day6/separator.png">
+    <img src="output/day6/separator.png" width="200" style="image-rendering: pixelated;" alt="separator - 1 frame">
+  </a>
+  <br>
+  <em>separator - 1 frame</em>
+</td>
+    <td align="center">
+  <a href="output/day6/twitch-logo.png">
+    <img src="output/day6/twitch-logo.png" width="200" style="image-rendering: pixelated;" alt="twitch-logo - 1 frame">
+  </a>
+  <br>
+  <em>twitch-logo - 1 frame</em>
+</td>
+    <td align="center">
+  <a href="output/day6/windowsd.png">
+    <img src="output/day6/windowsd.png" width="200" style="image-rendering: pixelated;" alt="windowsd - 1 frame">
+  </a>
+  <br>
+  <em>windowsd - 1 frame</em>
+</td>
+    <td align="center">
+  <a href="output/day6/x-logo.png">
+    <img src="output/day6/x-logo.png" width="200" style="image-rendering: pixelated;" alt="x-logo - 1 frame">
+  </a>
+  <br>
+  <em>x-logo - 1 frame</em>
+</td>
+  </tr>
+  <tr>
+    <td align="center">
+  <a href="output/day6/youtube-logo.png">
+    <img src="output/day6/youtube-logo.png" width="200" style="image-rendering: pixelated;" alt="youtube-logo - 1 frame">
+  </a>
+  <br>
+  <em>youtube-logo - 1 frame</em>
+</td>
+  </tr>
+</table>
 
 ---
 
