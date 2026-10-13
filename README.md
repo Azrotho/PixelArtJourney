@@ -2,9 +2,9 @@
 
 Pixel arts quotidiens - Sprites créés avec [Aseprite](https://www.aseprite.org/).
 
-**8 sprites • 5 jours • 34 frames au total**
+**9 sprites • 6 jours • 35 frames au total**
 
-Dernière mise à jour : 22 June 2026 à 15:33 UTC
+Dernière mise à jour : 13 October 2026 à 14:26 UTC
 
 ---
 
@@ -103,6 +103,19 @@ Dernière mise à jour : 22 June 2026 à 15:33 UTC
 </td>
   </tr>
 </table>
+
+---
+
+
+## Jour 6 - background
+
+<p align="center">
+  <a href="output/day6/background.png">
+    <img src="output/day6/background.png" width="300" style="image-rendering: pixelated;" alt="background - 1 frame">
+  </a>
+  <br>
+  <em>background - 1 frame</em>
+</p>
 
 ---
 
